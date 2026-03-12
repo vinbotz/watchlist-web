@@ -65,6 +65,9 @@ function showResults(movies) {
 
 `;
 
+    const btnWrapper = document.createElement("div");
+    btnWrapper.className = "movie-card-buttons";
+
     const addBtn = document.createElement("button");
     addBtn.innerText = "Tambah";
 
@@ -79,8 +82,9 @@ function showResults(movies) {
       showTrailer(movie.id);
     });
 
-    card.appendChild(addBtn);
-    card.appendChild(trailerBtn);
+    btnWrapper.appendChild(addBtn);
+    btnWrapper.appendChild(trailerBtn);
+    card.appendChild(btnWrapper);
 
     container.appendChild(card);
   });
@@ -158,6 +162,9 @@ async function loadMovies() {
 
 `;
 
+    const btnWrapper = document.createElement("div");
+    btnWrapper.className = "movie-card-buttons";
+
     const deleteBtn = document.createElement("button");
     deleteBtn.innerText = "Hapus";
 
@@ -165,7 +172,8 @@ async function loadMovies() {
       openDeleteModal(movie.id);
     });
 
-    card.appendChild(deleteBtn);
+    btnWrapper.appendChild(deleteBtn);
+    card.appendChild(btnWrapper);
 
     container.appendChild(card);
   });
@@ -227,13 +235,12 @@ async function showTrailer(id) {
 
     if (trailer) {
       document.getElementById("trailer").innerHTML = `
-
-<iframe width="700" height="400"
-src="https://www.youtube.com/embed/${trailer.key}"
-allowfullscreen>
-</iframe>
-
-`;
+        <iframe
+          src="https://www.youtube.com/embed/${trailer.key}"
+          allowfullscreen
+          title="Trailer">
+        </iframe>
+      `;
 
       window.scrollTo({
         top: document.getElementById("trailer").offsetTop,
