@@ -31,27 +31,52 @@
   </div>
 
   <body>
-    <header>
-      <h1>🎬 My Movie Watchlist</h1>
+    <button id="hamburgerBtn" class="hamburger-btn" aria-label="Menu">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
 
-      <div class="search-box">
-        <input id="movieInput" placeholder="Cari film..." />
+    <div id="menuOverlay" class="menu-overlay"></div>
+    <nav id="menuPanel" class="menu-panel">
+      <button id="closeMenuBtn" class="close-menu-btn" aria-label="Tutup menu">
+        ×
+      </button>
+      <ul class="menu-list">
+        <li><a href="#" data-section="header">🔍 Cari Film</a></li>
+        <li><a href="#" data-section="searchResult">📋 Hasil Pencarian</a></li>
+        <li><a href="#" data-section="trailerSection">🎬 Trailer</a></li>
+        <li><a href="#" data-section="watchlist">📽️ My Watchlist</a></li>
+        <li><a href="#" data-action="random">🎲 Rekomendasi Acak</a></li>
+      </ul>
+    </nav>
 
-        <button onclick="searchMovie()">Search</button>
+    <header id="header">
+      <div class="header-content">
+        <h1>🎬 My Movie Watchlist</h1>
+        <div class="search-box">
+          <input id="movieInput" placeholder="Cari film..." />
+          <button onclick="searchMovie()">Search</button>
+        </div>
       </div>
     </header>
 
-    <h2>Search Result</h2>
+    <main class="main-content">
+      <section class="section" id="searchResult">
+        <h2 class="section-title">Search Result</h2>
+        <div id="results" class="section-body"></div>
+      </section>
 
-    <div id="results"></div>
+      <section class="section" id="trailerSection">
+        <h2 class="section-title">Trailer</h2>
+        <div id="trailer" class="section-body"></div>
+      </section>
 
-    <h2>Trailer</h2>
-
-    <div id="trailer"></div>
-
-    <h2>My Watchlist</h2>
-
-    <div id="movies"></div>
+      <section class="section" id="watchlist">
+        <h2 class="section-title">My Watchlist</h2>
+        <div id="movies" class="section-body"></div>
+      </section>
+    </main>
 
     <script src="script.js"></script>
   </body>
