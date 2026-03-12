@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+
+    <title>Movie Watchlist</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  </head>
+
+  <div id="popup" class="popup">
+    <div class="popup-box">
+      <p id="popupMessage"></p>
+      <button onclick="closePopup()">OK</button>
+    </div>
+  </div>
+
+  <div id="deleteModal" class="popup">
+    <div class="popup-box">
+      <p>Hapus film ini dari watchlist?</p>
+
+      <div class="popup-buttons">
+        <button id="confirmDelete">Hapus</button>
+
+        <button onclick="closeDeleteModal()" class="cancel-btn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <body>
+    <header>
+      <h1>🎬 My Movie Watchlist</h1>
+
+      <div class="search-box">
+        <input id="movieInput" placeholder="Cari film..." />
+
+        <button onclick="searchMovie()">Search</button>
+      </div>
+    </header>
+
+    <h2>Search Result</h2>
+
+    <div id="results"></div>
+
+    <h2>Trailer</h2>
+
+    <div id="trailer"></div>
+
+    <h2>My Watchlist</h2>
+
+    <div id="movies"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
