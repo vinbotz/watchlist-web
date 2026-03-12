@@ -6,6 +6,46 @@ const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
 loadMovies();
 
+// Hamburger menu
+const hamburgerBtn = document.getElementById("hamburgerBtn");
+const menuPanel = document.getElementById("menuPanel");
+const menuOverlay = document.getElementById("menuOverlay");
+const closeMenuBtn = document.getElementById("closeMenuBtn");
+
+function openMenu() {
+  menuPanel.classList.add("active");
+  menuOverlay.classList.add("active");
+}
+
+function closeMenu() {
+  menuPanel.classList.remove("active");
+  menuOverlay.classList.remove("active");
+}
+
+hamburgerBtn.addEventListener("click", openMenu);
+closeMenuBtn.addEventListener("click", closeMenu);
+menuOverlay.addEventListener("click", closeMenu);
+
+document.querySelectorAll(".menu-list a").forEach((link) => {
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
+    const section = link.dataset.section;
+    const action = link.dataset.action;
+
+    if (action === "random") {
+      randomMovie();
+      closeMenu();
+      return;
+    }
+
+    const target = document.getElementById(section || "header");
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+    }
+    closeMenu();
+  });
+});
+
 document.getElementById("movieInput").addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     searchMovie();
